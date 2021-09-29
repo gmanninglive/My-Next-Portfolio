@@ -1,0 +1,28 @@
+{
+  "name": "porfoliov2000",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.3.6",
+    "formik": "^2.2.9",
+    "framer-motion": "^4.1.17",
+    "next": "11.1.2",
+    "postcss": "^8.3.8",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-intersection-observer": "^8.32.1",
+    "sass": "^1.42.1",
+    "tailwindcss": "^2.2.16"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2"
+  }
+}
