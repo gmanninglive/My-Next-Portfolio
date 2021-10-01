@@ -23,10 +23,10 @@ const font = useLoader(THREE.FontLoader, '/InterB2.json')
     <group {...props} scale={[1 * size, 1 * size, 1]}>
       <mesh ref={mesh}  >
         <textGeometry args={[text, config]}  />
-        <meshPhysicalMaterial 
+        <meshNormalMaterial 
         metalness={1}
         roughness={0.2}
-        
+        wireframe
         color="hotpink"
        
         reflectivity={1}/>

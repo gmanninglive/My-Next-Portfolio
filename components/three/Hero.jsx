@@ -62,12 +62,12 @@ function Torus() {
     return ( 
         <mesh ref={ref} position={[0, 150, 0]} castShadow>
         <torusKnotGeometry args={[30 , 10, 100, 10]} />
-        <meshPhysicalMaterial 
+        <meshNormalMaterial 
         metalness={1}
         roughness={0}
         normalMap={texture}
         color="red"
-        wireframe
+        
         reflectivity={1}/>
       </mesh>
     )
@@ -96,7 +96,7 @@ export default function Test() {
         <FlyControls />
         <Stars />
         <Name />
-        <Developer />
+        {/* <Developer /> */}
         <Suspense fallback="loading" >
           <Torus />
         </Suspense>
