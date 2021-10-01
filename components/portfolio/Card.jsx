@@ -1,4 +1,7 @@
 import Image from "next/image";
+
+
+
 export default function Card({ data }) {
   return (
     <div
@@ -10,7 +13,7 @@ export default function Card({ data }) {
         <h1>{data.title}</h1>
         <ul className="flex justify-start items-center flex-wrap gap-x-6">
           {data.tech.map((item) => (
-            <li key={item.id}>{item}</li>
+            <li key={item}>{item}</li>
           ))}
         </ul>
         <p className="py-4">{data.description}</p>
@@ -23,6 +26,7 @@ export default function Card({ data }) {
           </li>
         </ul>
       </div>
+      
       <div className="flex items-center">
         {data.image ? (
           <Image

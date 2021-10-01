@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Link from "next/link";
+
 import Cards from "components/portfolio/Cards";
 import Hero from "components/three/Hero";
 
@@ -22,26 +24,44 @@ export default function Home() {
 
       <div
         className={`overflow-hidden max-w-screen h-screen 
-      flex flex-col flex-wrap justify-between p-4 bg-black  
+      flex flex-col flex-wrap justify-start p-4 bg-black  
        relative ${
          lightBg ? "bg-gradient-to-tr from-pink-200 to-white" : "bg-black"
        }`}
       >
-        <form onChange={setBackground}>
-          <label htmlFor="toggle" className="flex items-center cursor-pointer">
-            <div className="relative">
-              <input type="checkbox" id="toggle" className="sr-only" />
-              <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
-              <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
-            </div>
-          </label>
-        </form>
-
+        <div className="w-full flex justify-between items-center">
+          <form onChange={setBackground}>
+            <label
+              htmlFor="toggle"
+              className="flex items-center cursor-pointer"
+            >
+              <div className="relative">
+                <input type="checkbox" id="toggle" className="sr-only" />
+                <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+              </div>
+            </label>
+          </form>
+          <ul className={`flex gap-x-2 ${
+            lightBg ? "text-gray-900" : "text-gray-100"
+          }`}>
+            <li>
+              <Link href="#projects">
+                <a>Projects</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="#contact">
+                <a>Contact</a>
+              </Link>
+            </li>
+          </ul>
+        </div>
         {/* bg-gradient-to-tr from-pink-200 to-white  */}
         <Hero />
         <FiChevronDown
           size={48}
-          className={`place-self-center animate-bounce ${
+          className={`mt-6 place-self-center animate-bounce ${
             lightBg ? "text-gray-900" : "text-gray-100"
           }`}
         />
@@ -57,7 +77,9 @@ export default function Home() {
         flex flex-col flex-wrap justify-start
         "
         >
-          <h1 className="text-3xl text-gray-100 px-4">Projects </h1>
+          <h1 id="projects" className="text-3xl text-gray-100 px-4">
+            Projects{" "}
+          </h1>
 
           <Cards />
         </div>
@@ -68,7 +90,9 @@ export default function Home() {
       bg-gradient-to-bl from-gray-200 to-white "
       >
         <div className="overflow-hidden w-screen xl:w-7/12 flex flex-col justify-start py-4">
-          <h1 className="text-4xl font-extrabold">Contact</h1>
+          <h1 id="contact" className="text-4xl font-extrabold">
+            Contact
+          </h1>
           <div className="h-full w-full flex flex-col items-center justify-evenly">
             <p>Email</p>
             <p>Github</p>
