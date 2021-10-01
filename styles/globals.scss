@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,16 +10,26 @@
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Inter','Roboto',system-ui,-apple-system,BlinkMacSystemFont,Segoe UI, Helvetica Neue ,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-    
+    font-family: "Inter", "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+      Segoe UI Emoji, Segoe UI Symbol;
+
     @apply w-full h-screen flex justify-start md:justify-center text-gray-900;
     max-width: 100vw;
+    h1 {
+      @apply font-bold;
+    }
+   
+      input:checked ~ .dot {
+        transform: translateX(100%);
+        background-color: #292929;
+      }
+      input:checked ~ .block{
+        @apply bg-gray-100
+      }
+
     
   }
-  
- 
 }
 @layer components {
-  
-
 }

@@ -1,9 +1,17 @@
-import Slide from "components/motion/Slide";
-import Card from "components/portfolio/Card";
+import { useState } from "react";
+import Cards from "components/portfolio/Cards";
+import Hero from "components/three/Hero";
+
 import Head from "next/head";
 import { FiChevronDown } from "react-icons/fi";
 
 export default function Home() {
+  const [lightBg, setLightBg] = useState(true);
+
+  function setBackground() {
+    if (lightBg == false) setLightBg(true);
+    else setLightBg(false);
+  }
   return (
     <>
       <Head>
@@ -13,45 +21,45 @@ export default function Home() {
       </Head>
 
       <div
-        className="overflow-hidden max-w-screen h-screen 
-      flex flex-col flex-wrap justify-center p-4 
-      bg-gradient-to-tr from-pink-200 to-white "
+        className={`overflow-hidden max-w-screen h-screen 
+      flex flex-col flex-wrap justify-between p-4 bg-black  
+       relative ${
+         lightBg ? "bg-gradient-to-tr from-pink-200 to-white" : "bg-black"
+       }`}
       >
-        <Slide direction="right" className="my-auto">
-          <span
-            className="flex flex-col items-end 
-        text-transparent bg-gradient-to-tr from-gray-900 to-indigo-900 
-        bg-clip-text mix-blend-multiply"
-          >
-            <h1 className="text-7xl font-extrabold">George Manning</h1>
-            <h2 className="text-3xl font-extrabold">Full Stack Developer</h2>
-          </span>
-        </Slide>
-        <FiChevronDown size={48} className="place-self-center animate-bounce" />
+        <form onChange={setBackground}>
+          <label htmlFor="toggle" className="flex items-center cursor-pointer">
+            <div className="relative">
+              <input type="checkbox" id="toggle" className="sr-only" />
+              <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
+              <div className="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+            </div>
+          </label>
+        </form>
+
+        {/* bg-gradient-to-tr from-pink-200 to-white  */}
+        <Hero />
+        <FiChevronDown
+          size={48}
+          className={`place-self-center animate-bounce ${
+            lightBg ? "text-gray-900" : "text-gray-100"
+          }`}
+        />
       </div>
       <div
-        className="overflow-hidden  min-h-screen 
+        className="overflow-hidden  
       flex justify-center py-4 
       bg-gradient-to-bl from-indigo-900 to-gray-600 "
       >
-        <div className="overflow-hidden w-screen 
+        <div
+          className="overflow-hidden w-screen 
         gap-y-4 xl:w-7/12 
-        flex flex-col flex-wrap justify-around
-        ">
+        flex flex-col flex-wrap justify-start
+        "
+        >
           <h1 className="text-3xl text-gray-100 px-4">Projects </h1>
-          <Slide direction="right">
-            <Card />
-          </Slide>
 
-          <Slide direction="right" delay={0.3}>
-            <Card />
-          </Slide>
-          <Slide direction="right" delay={0.7}>
-            <Card />
-          </Slide>
-          <Slide direction="right" delay={1}>
-            <Card />
-          </Slide>
+          <Cards />
         </div>
       </div>
       <div
@@ -62,8 +70,8 @@ export default function Home() {
         <div className="overflow-hidden w-screen xl:w-7/12 flex flex-col justify-start py-4">
           <h1 className="text-4xl font-extrabold">Contact</h1>
           <div className="h-full w-full flex flex-col items-center justify-evenly">
-          <p>Email</p>
-          <p>Github</p>
+            <p>Email</p>
+            <p>Github</p>
           </div>
         </div>
       </div>

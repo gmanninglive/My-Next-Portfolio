@@ -1,0 +1,39 @@
+[
+    {   
+    "id": 1,
+    "title": "Vie : Fullstack Invoicing Web App",
+    "tech": ["Next.js", "MongoDb", "Auth0", "TailwindCss", "Framer Motion"],
+    "description": "Vie is a fullstack web app, built from the ground up with Nextjs, MongoDb, Auth0, Tailwindcss, ChartJs and Framer Motion. You can create/edit/search/delete customers and invoices.Invoices can be previewed exported as a pdf. The dashboard gives insights with data visualisation based on your invoices.",
+    "web_url": "https://next-invoice-app.vercel.app/",
+    "git_url": "https://github.com/gmanninglive/Invoice-App",
+    "image": "/images/viescreen2.png"
+},
+{   
+    "id": 2,
+    "title": "Jazzroom Records : Fullstack Ecommerce Site",
+    "tech": ["Next.js", "Strapi", "Stripe", "TailwindCss"],
+    "description": "Full Stack e-Commerce web app for a small record label. I used Next.js for frontend. Strapi/ Node for backend and cms. Magic link is handling Auth. And Stripe handles payments. The backend is deployed with Heroku/Postgres and frontend with Vercel. AWS S3 handles image uploads.",
+    "web_url": "https://jazzroom-frontend.vercel.app/",
+    "git_url": "https://github.com/gmanninglive/Jazzroom-records-store",
+    "image": "/images/jazzroomscreen.png"
+},
+{   
+    "id": 3,
+    "title": "My Gatsby Portofolio",
+    "tech": ["Gatsby", "GraphQl", "Contentful", "Sass"],
+    "description": "I created this portfolio/blog using gatsby/react, graphql and sass. I made this website to showcase some of my work, write about cool things to do with coding and be a place to test out new ideas. Checkout the gitHub repo!",
+    "web_url": "https://gmanningdev.uk/",
+    "git_url": "https://github.com/gmanninglive/MyPortfolioWebsite",
+    "image": "/images/myportfolio.png"
+},
+{   
+    "id": 4,
+    "title": "Journalist Portfolio Website",
+    "tech": ["Gatsby", "GraphQl", "Contentful", "TailwindCss"],
+    "description": "I created a portfolio website for a graduate Journalist / content writer. Utilising Gatsby.js, ContentfulCMS, GraphQL and Netlify. The React based Gatsby framework produces super-fast, reliable and feature rich websites.",
+    "web_url": "https://bronwenlatham.com",
+    "git_url": "https://github.com/gmanninglive/Bronsportfolio",
+    "image": "/images/bronportfolio.png"
+}
+
+]
