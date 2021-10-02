@@ -26,7 +26,7 @@ const font = useLoader(THREE.FontLoader, '/InterB2.json')
         <meshNormalMaterial 
         metalness={1}
         roughness={0.2}
-        wireframe
+        
         color="hotpink"
        
         reflectivity={1}/>

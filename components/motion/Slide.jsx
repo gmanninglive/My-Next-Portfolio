@@ -8,10 +8,10 @@ export default function Slide({ children, direction, delay , ...rest}) {
     let start;
     let end = 0;
     if(direction == "left"){
-        start = -100;
+        start = -300;
         }
         else
-        start = 100;
+        start = 300;
         
         
   
