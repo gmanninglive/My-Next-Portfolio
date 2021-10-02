@@ -72,7 +72,8 @@ function Torus() {
       <meshNormalMaterial
         metalness={1}
         roughness={0}
-        normalMap={texture}
+        // normalMap={texture}
+        wireframe
         color="red"
         reflectivity={1}
       />
