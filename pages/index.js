@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import Link from "next/link";
 
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>George Manning&Apos;s Portfolio</title>
+        <title>George Manning's Portfolio</title>
         <meta
           name="description"
           content="Built with NextJs ThreeJs and Tailwind"
@@ -98,8 +99,8 @@ export default function Home() {
           <div className="w-full flex justify-between items-center gap-y-2 ">
             <ul>
               <li>Created by George Manning</li>
-              <li>Using Next.Js, Threejs & TailwindCss 🤙</li>
-              <li className="">Check back monthly for updated 3d visuals 👨‍💻</li>
+              <li>Using Next.Js, Threejs & TailwindCss</li>
+              <li className="">Check back monthly for updated 3d visuals 🤙</li>
             </ul>
             <Link href="#index">
               <a className="animate-bounce text-gray-900">

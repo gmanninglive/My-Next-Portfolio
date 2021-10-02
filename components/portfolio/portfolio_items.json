@@ -6,7 +6,7 @@
     "description": "Vie is a fullstack web app, built from the ground up with Nextjs, MongoDb, Auth0, Tailwindcss, ChartJs and Framer Motion. You can create/edit/search/delete customers and invoices.Invoices can be previewed exported as a pdf. The dashboard gives insights with data visualisation based on your invoices.",
     "web_url": "https://next-invoice-app.vercel.app/",
     "git_url": "https://github.com/gmanninglive/Invoice-App",
-    "image": "/images/viescreen2.png"
+    "image": "/images/viescreen.png"
 },
 {   
     "id": 2,
