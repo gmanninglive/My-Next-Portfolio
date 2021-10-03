@@ -3,10 +3,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 import { useRef, useState } from "react";
 
-const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+import SITE_KEY from "lib/recaptchakey";
+import Alert from "components/common/Alert";
 
+// TODO Build custom alert components
 export default function ContactForm() {
-  const { isSubmitting, setSubmitting } = useState(false);
   const recaptchaRef = useRef();
 
   const initialValues = {
@@ -17,23 +18,32 @@ export default function ContactForm() {
 
   async function handleSubmit(values) {
     const body = { values };
-
     const res = await fetch(`/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-    if (res.ok) console.log("OK");
+    return res;
   }
-
-  
 
   return (
     <Formik
       initialValues={initialValues}
       validateOnChange={false}
       validateOnBlur={false}
-      onSubmit={(values) => { handleSubmit(values) }}
+      onSubmit={(values, actions) => {
+        handleSubmit(values).then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            actions.setStatus( "Success: 'Email sent !'" )
+            actions.setSubmitting(false);
+            actions.resetForm();
+          } else {
+            actions.setSubmitting(false);
+            actions.setStatus( "Error: 'Sorry there was an error please try again !'" )
+          }
+        });
+      }}
     >
       {(props) => {
         const handleBlur = (e) => {
@@ -46,7 +56,8 @@ export default function ContactForm() {
         };
 
         return (
-          <Form
+          <form
+            onSubmit={props.handleSubmit}
             className="w-full md:w-3/4 flex flex-col gap-y-4 p-2 my-4 bg-white/[0.5]"
           >
             <input
@@ -83,7 +94,7 @@ export default function ContactForm() {
             <ReCAPTCHA
               className="invisible"
               ref={recaptchaRef}
-              sitekey={TEST_SITE_KEY}
+              sitekey={SITE_KEY}
               onChange={(value) => {
                 console.log("$$$$", props.isSubmitting, value);
                 props.setFieldValue("recaptcha", value);
@@ -103,10 +114,9 @@ export default function ContactForm() {
                 &nbsp;apply.
               </span>
             </div>
-            
-
+              
             {props.errors.name && <div>{props.errors.name}</div>}
-          </Form>
+          </form>
         );
       }}
     </Formik>
