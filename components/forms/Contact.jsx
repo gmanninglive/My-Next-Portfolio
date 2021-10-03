@@ -47,7 +47,7 @@ export default function ContactForm() {
     >
       {(props) => {
         const handleBlur = (e) => {
-          console.log("$$$$", props.isSubmitting);
+        //   console.log("$$$$", props.isSubmitting);
           if (!props.values.recaptcha) {
             recaptchaRef.current.execute();
             props.setSubmitting(true);
@@ -58,7 +58,7 @@ export default function ContactForm() {
         return (
           <form
             onSubmit={props.handleSubmit}
-            className="w-full md:w-3/4 flex flex-col gap-y-4 p-2 my-4 bg-white/[0.5]"
+            className="w-full md:w-3/4 flex flex-col gap-y-4 p-2 bg-white/[0.5]"
           >
             <input
               type="text"
@@ -96,13 +96,13 @@ export default function ContactForm() {
               ref={recaptchaRef}
               sitekey={SITE_KEY}
               onChange={(value) => {
-                console.log("$$$$", props.isSubmitting, value);
+                // console.log("$$$$", props.isSubmitting, value);
                 props.setFieldValue("recaptcha", value);
                 props.setSubmitting(false);
               }}
               size="invisible"
             />
-            <button type="submit" disabled={props.isSubmitting}>
+            <button type="submit" disabled={props.isSubmitting} className="w-full p-2 bg-gray-900 text-gray-100 shadow-sm">
               SUBMIT
             </button>
             <div className="w-full flex justify-center text-xs">

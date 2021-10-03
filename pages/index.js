@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
+import { FiChevronDown, FiArrowUp } from "react-icons/fi";
+import { GrLinkedin } from "react-icons/gr"
 
 import Cards from "components/portfolio/Cards";
 import Hero from "components/three/Hero";
-
-import Head from "next/head";
-import { FiChevronDown, FiArrowUp } from "react-icons/fi";
-import Email from "components/buttons/Email";
 import GitLink from "components/buttons/GitLink";
 import ToggleColor from "components/buttons/ToggleColor";
 import ContactForm from "components/forms/Contact";
@@ -89,18 +88,21 @@ export default function Home() {
       flex justify-center px-4 pt-4 pb-2 
       bg-gradient-to-b from-gray-200 to-white  "
       >
-        <div className="overflow-hidden w-screen xl:w-7/12 flex flex-col justify-start py-4 relative">
+        <div className="overflow-hidden w-screen xl:w-7/12 flex flex-col justify-start py-4 gap-y-4 relative">
           <h1 id="contact" className="text-4xl font-extrabold">
             Contact
           </h1>
-          <div className="h-full w-full flex flex-col items-center justify-evenly gap-y-6">
-            <span className="flex flex-col items-center">
+          <div className="h-full w-full flex flex-col items-center justify-start gap-y-6">
+            <span className="flex flex-col items-center gap-y-4">
             <h2>I look forward to hearing from you, drop me a line via the contact form</h2>
             <ContactForm />
             </span>
-            <span className="flex flex-col items-center">
+            <span className="flex flex-col items-center gap-y-4">
             <h2>Or contact me through one of my socials</h2>
+            <span className="flex justify-center items-center gap-x-4">
             <GitLink url="https://github.com/gmanninglive" />
+            <a href="https://www.linkedin.com/in/george-manning-90a47621a/" className="text-gray-800"><GrLinkedin size={36} /></a>
+            </span>
             </span>
           </div>
           
