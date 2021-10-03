@@ -10,6 +10,7 @@ import { FiChevronDown, FiArrowUp } from "react-icons/fi";
 import Email from "components/buttons/Email";
 import GitLink from "components/buttons/GitLink";
 import ToggleColor from "components/buttons/ToggleColor";
+import ContactForm from "components/forms/Contact";
 
 export default function Home() {
   const [lightBg, setLightBg] = useState(true);
@@ -84,7 +85,7 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="overflow-hidden  h-screen 
+        className="overflow-hidden  min-h-screen 
       flex justify-center px-4 pt-4 pb-2 
       bg-gradient-to-b from-gray-200 to-white  "
       >
@@ -92,10 +93,17 @@ export default function Home() {
           <h1 id="contact" className="text-4xl font-extrabold">
             Contact
           </h1>
-          <div className="h-full w-full flex flex-col items-center justify-evenly">
-            <Email />
+          <div className="h-full w-full flex flex-col items-center justify-evenly gap-y-6">
+            <span className="flex flex-col items-center">
+            <h2>I look forward to hearing from you, drop me a line via the contact form</h2>
+            <ContactForm />
+            </span>
+            <span className="flex flex-col items-center">
+            <h2>Or contact me through one of my socials</h2>
             <GitLink url="https://github.com/gmanninglive" />
+            </span>
           </div>
+          
           <div className="w-full flex justify-between items-center gap-y-2 ">
             <ul>
               <li>Created by George Manning</li>
