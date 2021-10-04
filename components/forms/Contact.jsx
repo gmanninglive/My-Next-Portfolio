@@ -1,16 +1,15 @@
 import { Field, Formik, Form } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
-
 import { useRef, useState } from "react";
 
 import SITE_KEY from "lib/recaptchakey";
-import Alert from "components/common/Alert";
+import ContactAlert from "components/common/ContactAlert";
 
-// TODO Refacter Success / Error Alert. Works fine for now...
 export default function ContactForm() {
   const recaptchaRef = useRef();
-  const [alertOpen, setAlertOpen] = useState(false);
-  const [alertType, setAlert] =useState("error")
+
+  // Contact form alert state
+  const [alertState, setAlertState] = useState({ type: "error", open: false });
 
   const initialValues = {
     from_name: "",
@@ -19,23 +18,22 @@ export default function ContactForm() {
   };
 
   async function handleSubmit(values) {
-      const body = { values };
-      const res = await fetch(`/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+    const body = { values };
+    // Post request to nodemailer route with contact form values as body. Returns promise as res
+    const res = await fetch(`/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
     // const res = { status: 400 }; // Just for testing
     return res;
   }
-  const success = "Success: Email sent!";
-  const error = "Error: Sorry there was an error please try again!"
 
+  // Setting alert state with timer
   function alert(message) {
-    setAlert(message);
-    setAlertOpen(true);
+    setAlertState({ type: message, open: true });
     setTimeout(() => {
-      setAlertOpen(false);
+      setAlertState({ type: message, open: false });
     }, 3000);
   }
 
@@ -46,19 +44,21 @@ export default function ContactForm() {
       validateOnBlur={false}
       onSubmit={(values, actions) => {
         handleSubmit(values).then((res) => {
+          // Log Api response
           console.log(res.json());
           if (res.status === 200) {
-            actions.setStatus("Success");
+            // Enable Submit button
             actions.setSubmitting(false);
+            // Load success Alert
             alert("success");
+            // Reset Form
             actions.resetForm();
           } else {
-            actions.setStatus(
-              "Error"
-              );
-              actions.setSubmitting(false);
-              alert("error");
-            }
+            // Enable Submit button
+            actions.setSubmitting(false);
+            // Load Error Alert & don't reset form
+            alert("error");
+          }
         });
       }}
     >
@@ -78,27 +78,8 @@ export default function ContactForm() {
             className="w-full md:w-3/4 flex flex-col gap-y-4 p-2 bg-white/[0.5] relative"
           >
             {/* Alert on Success or Error */}
-            {alertType ==="success" ? (
-              <p
-                className={`${
-                  alertOpen
-                    ? "absolute transition-all ease-in-out top-2 left-20 right-20 bg-green-600/[0.8] p-2 border-2 border-green-800 text-white shadow-md flex justify-center "
-                    : "hidden"
-                }`}
-              >
-                {success}
-              </p>
-            ) : (
-              <p
-                className={`${
-                  alertOpen
-                    ? "absolute transition-all ease-in-out top-2 left-20 right-20 bg-red-600/[0.8] p-2 border-2 border-red-800 text-white shadow-md flex justify-center "
-                    : "hidden"
-                }`}
-              >
-                {error}
-              </p>
-            )}
+            <ContactAlert alertState={alertState} />
+
             <input
               type="text"
               onChange={props.handleChange}
@@ -120,6 +101,7 @@ export default function ContactForm() {
               required
               className="p-2"
             />
+
             <Field
               as="textarea"
               onChange={props.handleChange}
@@ -130,6 +112,7 @@ export default function ContactForm() {
               required
               className="p-2 h-48"
             />
+
             <ReCAPTCHA
               className="invisible"
               ref={recaptchaRef}
@@ -141,13 +124,15 @@ export default function ContactForm() {
               }}
               size="invisible"
             />
+
             <button
               type="submit"
               disabled={props.isSubmitting}
               className="w-full p-2 bg-gray-900 text-gray-100 shadow-sm"
             >
-              {props.isSubmitting ? "Loading..." : "SUBMIT"}
+              {props.isSubmitting ? "Loading..." : "Submit"}
             </button>
+            {/* Required when hiding google recaptcha badge */}
             <div className="w-full flex justify-center text-xs">
               <span>
                 This site is protected by reCAPTCHA and the Google&nbsp;
