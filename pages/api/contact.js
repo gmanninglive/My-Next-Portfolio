@@ -11,6 +11,7 @@ const transporter = nodemailer.createTransport({
   })
 
 export default function handler(req, res) {
+  return new Promise(resolve => {
   if (req.method == "POST") {
     const { from_name, from_email, message } = req.body.values
       let mailData = {
@@ -24,15 +25,17 @@ export default function handler(req, res) {
         if(err)
         {
           console.log(err)
-          res.status(400).send(err);
+          res.status(400).end(err);
+          resolve()
         }
         else
         {
           console.log(info)
-          res.status(200).send("Email Sent");
+          res.status(200).json(info);
+          resolve()
         }
       })
 
-    
-  }
+    }
+  })
 }
