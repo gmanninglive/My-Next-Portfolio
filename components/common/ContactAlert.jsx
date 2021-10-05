@@ -33,7 +33,7 @@ export default function ContactAlert({ alertState }) {
   );
 }
 
-ContactAlert.PropTypes = {
+ContactAlert.propTypes = {
   alertState: PropTypes.shape({
     type: PropTypes.oneOf(['success', 'error']).isRequired,
     open: PropTypes.bool.isRequired,

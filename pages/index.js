@@ -3,13 +3,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { FiChevronDown, FiArrowUp } from "react-icons/fi";
-import { GrLinkedin } from "react-icons/gr"
+import { GrLinkedin } from "react-icons/gr";
 
 import Cards from "components/portfolio/Cards";
 import Hero from "components/three/Hero";
 import GitLink from "components/buttons/GitLink";
 import ToggleColor from "components/buttons/ToggleColor";
 import ContactForm from "components/forms/Contact";
+import METADATA from "components/metadata/Metadata";
 
 export default function Home() {
   const [lightBg, setLightBg] = useState(true);
@@ -20,14 +21,7 @@ export default function Home() {
   }
   return (
     <>
-      <Head>
-        <title>George Manning's Portfolio</title>
-        <meta
-          name="description"
-          content="Built with NextJs ThreeJs and Tailwind"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <METADATA />
 
       <div
         id="index"
@@ -94,18 +88,26 @@ export default function Home() {
           </h1>
           <div className="h-full w-full flex flex-col items-center justify-start gap-y-6">
             <span className="flex flex-col items-center gap-y-4">
-            <h2>I look forward to hearing from you, drop me a line via the contact form</h2>
-            <ContactForm />
+              <h2>
+                I look forward to hearing from you, drop me a line via the
+                contact form
+              </h2>
+              <ContactForm />
             </span>
             <span className="flex flex-col items-center gap-y-4">
-            <h2>Or contact me through one of my socials</h2>
-            <span className="flex justify-center items-center gap-x-4">
-            <GitLink url="https://github.com/gmanninglive" />
-            <a href="https://www.linkedin.com/in/george-manning-90a47621a/" className="text-gray-800"><GrLinkedin size={36} /></a>
-            </span>
+              <h2>Or contact me through one of my socials</h2>
+              <span className="flex justify-center items-center gap-x-4">
+                <GitLink url="https://github.com/gmanninglive" />
+                <a
+                  href="https://www.linkedin.com/in/george-manning-90a47621a/"
+                  className="text-gray-800"
+                >
+                  <GrLinkedin size={36} />
+                </a>
+              </span>
             </span>
           </div>
-          
+
           <div className="w-full flex justify-between items-center gap-y-2 ">
             <ul>
               <li>Created by George Manning</li>
